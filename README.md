@@ -9,7 +9,7 @@ python -m venv venv
 venv\Scripts\activate # Windowsis: venv\Scripts\activate
 pip install flask pyjwt
 
-$env:SALAVOTI = "pane-siia-vahemalt-32-margiline-salavoti"
+set SALAVOTI=pane-siia-vahemalt-32-margiline-salavoti
 
 python app.py
 ```
@@ -31,4 +31,10 @@ Server töötab aadressil http://127.0.0.1:5000
 
 ```
 python testid.py
+
+curl -X POST http://127.0.0.1:5000/login -H "Content-Type: application/json" -d "{\"kasutajanimi\":\"mari\",\"parool\":\"maasikas1\"}"
+
+curl http://127.0.0.1:5000/profiil -H "Authorization: Bearer TOKEN"
+
+curl http://127.0.0.1:5000/profiil #Saatmine ilma tokenita põhjustab vea
 ```
